@@ -1,4 +1,4 @@
-import { Category } from "../model/Category";
+import { Category } from "../infra/typeorm/entities/Category";
 
 interface ICreteCategoryDTO {
   name: string,
@@ -6,10 +6,10 @@ interface ICreteCategoryDTO {
 }
 
 interface ICategoryRepository{
-  findByName(name: string): Category;
-  list(): Category[];
+  findByName(name: string): Promise<Category>;
+  list(): Promise<Category[]>;
 
-  create({name, description }: ICreteCategoryDTO): void;
+  create({name, description }: ICreteCategoryDTO): Promise<void>;
  
 
 }
